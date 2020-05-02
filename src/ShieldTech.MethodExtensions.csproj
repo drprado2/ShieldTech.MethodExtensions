@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Title>ShieldTech.MethodExtensions</Title>
+    <Authors>Adriano Oliveira</Authors>
+    <Description>Lib that contains extension methods to help any business development</Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/drprado2/ShieldTech.MethodExtensions</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/drprado2/ShieldTech.MethodExtensions/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/drprado2/ShieldTech.MethodExtensions</RepositoryUrl>
+    <PackageTags>CPF CNPJ EXTENSIONS</PackageTags>
+  </PropertyGroup>
+
+</Project>
