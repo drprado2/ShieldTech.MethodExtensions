@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -68,12 +69,11 @@ namespace ShieldTech.MethodExtensions
             return sbReturn.ToString();
         }
         
-        public static Type[] GetTypesFromClassName(this string className)
+        public static IEnumerable<Type> GetTypesFromClassName(this string className)
         {
             return Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(type => type.Name == className)
-                .ToArray();
+                .GetTypesFromAssemblyAndReferenced()
+                .Where(type => type.Name == className);
         }
     }
 }
