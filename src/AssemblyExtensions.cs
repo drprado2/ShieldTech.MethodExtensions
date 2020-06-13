@@ -15,5 +15,20 @@ namespace ShieldTech.MethodExtensions
                 .Concat(new[] {assembly})
                 .SelectMany(x => x.GetTypes());
         }
+
+        public static IEnumerable<Type> SafeGetTypesFromDomainAssemblies()
+        {
+            IEnumerable<Type> types;
+            try
+            {
+                types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes());
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                types = e.Types.Where(x => x != null);
+            }
+
+            return types;
+        }
     }
 }
