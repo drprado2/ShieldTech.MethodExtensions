@@ -18,14 +18,18 @@ namespace ShieldTech.MethodExtensions
 
         public static IList<Type> SafeGetTypesFromDomainAssemblies()
         {
-            IList<Type> types;
-            try
+            var types = new List<Type>();
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in assemblies)
             {
-                types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).ToList();
-            }
-            catch (ReflectionTypeLoadException e)
-            {
-                types = e.Types.Where(x => x != null).ToList();
+                try
+                {
+                    types.AddRange(assembly.GetTypes().ToList());
+                }
+                catch (ReflectionTypeLoadException e)
+                {
+                    types.AddRange(e.Types.Where(x => x != null).ToList());
+                }
             }
 
             return types;
