@@ -16,16 +16,16 @@ namespace ShieldTech.MethodExtensions
                 .SelectMany(x => x.GetTypes());
         }
 
-        public static IEnumerable<Type> SafeGetTypesFromDomainAssemblies()
+        public static IList<Type> SafeGetTypesFromDomainAssemblies()
         {
-            IEnumerable<Type> types;
+            IList<Type> types;
             try
             {
-                types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes());
+                types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).ToList();
             }
             catch (ReflectionTypeLoadException e)
             {
-                types = e.Types.Where(x => x != null);
+                types = e.Types.Where(x => x != null).ToList();
             }
 
             return types;
