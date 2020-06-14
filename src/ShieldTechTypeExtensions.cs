@@ -2,9 +2,9 @@
 
 namespace ShieldTech.MethodExtensions
 {
-    public static class TypeExtensions
+    public static class ShieldTechTypeExtensions
     {
-        public static object GetDefaultInstance(Type type)
+        public static object GetDefaultInstance(this Type type)
         {
             if(type.IsValueType)
             {
